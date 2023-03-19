@@ -54,9 +54,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.searchField = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.favoriteSongs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.homeIcon)).BeginInit();
@@ -250,6 +250,7 @@
             this.playListsTable.Controls.Add(this.panel3, 2, 0);
             this.playListsTable.Controls.Add(this.panel1, 0, 0);
             this.playListsTable.Controls.Add(this.panel2, 1, 0);
+            this.playListsTable.Controls.Add(this.button1, 1, 1);
             this.playListsTable.Location = new System.Drawing.Point(195, 50);
             this.playListsTable.Name = "playListsTable";
             this.playListsTable.RowCount = 3;
@@ -265,7 +266,7 @@
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.pictureBox4);
-            this.panel4.Location = new System.Drawing.Point(752, 23);
+            this.panel4.Location = new System.Drawing.Point(752, 24);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(203, 252);
             this.panel4.TabIndex = 5;
@@ -298,7 +299,7 @@
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.pictureBox3);
-            this.panel3.Location = new System.Drawing.Point(508, 23);
+            this.panel3.Location = new System.Drawing.Point(508, 24);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(203, 252);
             this.panel3.TabIndex = 4;
@@ -331,7 +332,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.panel1.Controls.Add(this.listName);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(20, 23);
+            this.panel1.Location = new System.Drawing.Point(20, 24);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(203, 252);
             this.panel1.TabIndex = 2;
@@ -364,7 +365,7 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Location = new System.Drawing.Point(264, 23);
+            this.panel2.Location = new System.Drawing.Point(264, 24);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(203, 252);
             this.panel2.TabIndex = 3;
@@ -391,45 +392,43 @@
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(247, 303);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(123, 54);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.BackColor = System.Drawing.Color.Black;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(195, 1041);
             this.label1.TabIndex = 12;
             // 
-            // textBox1
+            // searchField
             // 
-            this.textBox1.Location = new System.Drawing.Point(677, 10);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(277, 27);
-            this.textBox1.TabIndex = 13;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.BackColor = System.Drawing.SystemColors.Window;
-            this.label5.Location = new System.Drawing.Point(215, 13);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(317, 24);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "label5";
+            this.searchField.Location = new System.Drawing.Point(33, 443);
+            this.searchField.Name = "searchField";
+            this.searchField.Size = new System.Drawing.Size(277, 27);
+            this.searchField.TabIndex = 13;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.searchField);
             this.Controls.Add(this.labelMyMedia);
             this.Controls.Add(this.playListsTable);
             this.Controls.Add(this.labelFavoriteTracks);
             this.Controls.Add(this.labelCreatePlayList);
-            this.Controls.Add(this.logo);
             this.Controls.Add(this.labelSearch);
             this.Controls.Add(this.mediaItem);
             this.Controls.Add(this.labelMain);
@@ -438,11 +437,13 @@
             this.Controls.Add(this.searchIcon);
             this.Controls.Add(this.homeIcon);
             this.Controls.Add(this.favoriteSongs);
+            this.Controls.Add(this.logo);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.favoriteSongs)).EndInit();
@@ -491,7 +492,7 @@
         private Panel panel2;
         private Label label2;
         private PictureBox pictureBox2;
-        private TextBox textBox1;
-        private Label label5;
+        private TextBox searchField;
+        private Button button1;
     }
 }

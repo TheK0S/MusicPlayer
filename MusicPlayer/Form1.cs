@@ -7,6 +7,17 @@ namespace MusicPlayer
         public Form1()
         {
             InitializeComponent();
+
+            var btn = new RoundButton();
+            btn.Text = "asdadsads";
+            btn.Location = new Point(230, 5);
+            btn.Width = 277;
+            btn.Height = 30;
+            this.Controls.Add(btn);
+            btn.BackColor = Color.White;
+
+            searchField.Region = new Region(RoundButton.GetRoundedRectangle(searchField.ClientRectangle, 20));
+            Graphics.SmoothingMode = SmoothingMode.HighQuality;
         }
 
         private void Form1_Load(object sender, EventArgs e)
