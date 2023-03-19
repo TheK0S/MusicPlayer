@@ -16,8 +16,11 @@ namespace MusicPlayer
             this.Controls.Add(btn);
             btn.BackColor = Color.White;
 
+            Graphics gr = searchField.CreateGraphics();
+            gr.DrawPath(new Pen(Color.Red,1 ), RoundButton.GetRoundedRectangle(searchField.ClientRectangle, 20));
             searchField.Region = new Region(RoundButton.GetRoundedRectangle(searchField.ClientRectangle, 20));
-            Graphics.SmoothingMode = SmoothingMode.HighQuality;
+            
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)

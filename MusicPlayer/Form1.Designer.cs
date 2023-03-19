@@ -57,6 +57,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.searchField = new System.Windows.Forms.TextBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.favoriteSongs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.homeIcon)).BeginInit();
@@ -72,6 +73,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // labelMyMedia
@@ -251,6 +253,7 @@
             this.playListsTable.Controls.Add(this.panel1, 0, 0);
             this.playListsTable.Controls.Add(this.panel2, 1, 0);
             this.playListsTable.Controls.Add(this.button1, 1, 1);
+            this.playListsTable.Controls.Add(this.pictureBox5, 2, 1);
             this.playListsTable.Location = new System.Drawing.Point(195, 50);
             this.playListsTable.Name = "playListsTable";
             this.playListsTable.RowCount = 3;
@@ -417,6 +420,14 @@
             this.searchField.Size = new System.Drawing.Size(277, 27);
             this.searchField.TabIndex = 13;
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Location = new System.Drawing.Point(491, 303);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(155, 89);
+            this.pictureBox5.TabIndex = 7;
+            this.pictureBox5.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -460,6 +471,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -494,5 +506,6 @@
         private PictureBox pictureBox2;
         private TextBox searchField;
         private Button button1;
+        private PictureBox pictureBox5;
     }
 }
