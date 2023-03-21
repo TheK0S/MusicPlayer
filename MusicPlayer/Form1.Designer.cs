@@ -42,22 +42,20 @@
             this.createItem = new System.Windows.Forms.PictureBox();
             this.mediaItem = new System.Windows.Forms.PictureBox();
             this.playListsTable = new System.Windows.Forms.TableLayoutPanel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.listName = new System.Windows.Forms.Label();
+            this.listName1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.searchField = new System.Windows.Forms.TextBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.searchFieldWrapper = new MusicPlayer.RoundButton();
+            this.songTimeLine = new System.Windows.Forms.TrackBar();
+            this.pictureBoxSearchIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.favoriteSongs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.homeIcon)).BeginInit();
@@ -65,15 +63,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.createItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mediaItem)).BeginInit();
             this.playListsTable.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.songTimeLine)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSearchIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // labelMyMedia
@@ -82,13 +79,15 @@
             this.labelMyMedia.AutoSize = true;
             this.labelMyMedia.BackColor = System.Drawing.Color.Black;
             this.labelMyMedia.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelMyMedia.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.labelMyMedia.ForeColor = System.Drawing.Color.LightGray;
             this.labelMyMedia.Location = new System.Drawing.Point(55, 240);
             this.labelMyMedia.Name = "labelMyMedia";
             this.labelMyMedia.Size = new System.Drawing.Size(108, 19);
             this.labelMyMedia.TabIndex = 11;
             this.labelMyMedia.Text = "Моя медиатека";
             this.labelMyMedia.Click += new System.EventHandler(this.labelMyMedia_Click);
+            this.labelMyMedia.MouseLeave += new System.EventHandler(this.labelMyMedia_MouseLeave);
+            this.labelMyMedia.MouseHover += new System.EventHandler(this.labelMyMedia_MouseHover);
             // 
             // labelFavoriteTracks
             // 
@@ -96,13 +95,15 @@
             this.labelFavoriteTracks.AutoSize = true;
             this.labelFavoriteTracks.BackColor = System.Drawing.Color.Black;
             this.labelFavoriteTracks.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelFavoriteTracks.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.labelFavoriteTracks.ForeColor = System.Drawing.Color.LightGray;
             this.labelFavoriteTracks.Location = new System.Drawing.Point(57, 369);
             this.labelFavoriteTracks.Name = "labelFavoriteTracks";
             this.labelFavoriteTracks.Size = new System.Drawing.Size(115, 19);
             this.labelFavoriteTracks.TabIndex = 10;
             this.labelFavoriteTracks.Text = "Любимые треки";
             this.labelFavoriteTracks.Click += new System.EventHandler(this.labelFavoriteTracks_Click);
+            this.labelFavoriteTracks.MouseLeave += new System.EventHandler(this.labelFavoriteTracks_MouseLeave);
+            this.labelFavoriteTracks.MouseHover += new System.EventHandler(this.labelFavoriteTracks_MouseHover);
             // 
             // labelCreatePlayList
             // 
@@ -110,13 +111,15 @@
             this.labelCreatePlayList.AutoSize = true;
             this.labelCreatePlayList.BackColor = System.Drawing.Color.Black;
             this.labelCreatePlayList.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelCreatePlayList.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.labelCreatePlayList.ForeColor = System.Drawing.Color.LightGray;
             this.labelCreatePlayList.Location = new System.Drawing.Point(55, 320);
             this.labelCreatePlayList.Name = "labelCreatePlayList";
             this.labelCreatePlayList.Size = new System.Drawing.Size(124, 19);
             this.labelCreatePlayList.TabIndex = 9;
             this.labelCreatePlayList.Text = "Создать плейлист";
             this.labelCreatePlayList.Click += new System.EventHandler(this.labelCreatePlayList_Click);
+            this.labelCreatePlayList.MouseLeave += new System.EventHandler(this.labelCreatePlayList_MouseLeave);
+            this.labelCreatePlayList.MouseHover += new System.EventHandler(this.labelCreatePlayList_MouseHover);
             // 
             // labelSearch
             // 
@@ -124,13 +127,15 @@
             this.labelSearch.AutoSize = true;
             this.labelSearch.BackColor = System.Drawing.Color.Black;
             this.labelSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelSearch.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.labelSearch.ForeColor = System.Drawing.Color.LightGray;
             this.labelSearch.Location = new System.Drawing.Point(55, 189);
             this.labelSearch.Name = "labelSearch";
             this.labelSearch.Size = new System.Drawing.Size(49, 19);
             this.labelSearch.TabIndex = 8;
             this.labelSearch.Text = "Поиск";
             this.labelSearch.Click += new System.EventHandler(this.labelSearch_Click);
+            this.labelSearch.MouseLeave += new System.EventHandler(this.labelSearch_MouseLeave);
+            this.labelSearch.MouseHover += new System.EventHandler(this.labelSearch_MouseHover);
             // 
             // labelMain
             // 
@@ -138,24 +143,26 @@
             this.labelMain.AutoSize = true;
             this.labelMain.BackColor = System.Drawing.Color.Black;
             this.labelMain.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelMain.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.labelMain.ForeColor = System.Drawing.Color.LightGray;
             this.labelMain.Location = new System.Drawing.Point(55, 141);
             this.labelMain.Name = "labelMain";
             this.labelMain.Size = new System.Drawing.Size(60, 19);
             this.labelMain.TabIndex = 7;
             this.labelMain.Text = "Главная";
             this.labelMain.Click += new System.EventHandler(this.labelMain_Click);
+            this.labelMain.MouseLeave += new System.EventHandler(this.labelMain_MouseLeave);
+            this.labelMain.MouseHover += new System.EventHandler(this.labelMain_MouseHover);
             // 
             // labelLogo
             // 
             this.labelLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelLogo.AutoSize = true;
             this.labelLogo.BackColor = System.Drawing.Color.Black;
-            this.labelLogo.Font = new System.Drawing.Font("Vladimir Script", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.labelLogo.ForeColor = System.Drawing.SystemColors.Window;
-            this.labelLogo.Location = new System.Drawing.Point(68, 53);
+            this.labelLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.labelLogo.ForeColor = System.Drawing.Color.LightGray;
+            this.labelLogo.Location = new System.Drawing.Point(56, 53);
             this.labelLogo.Name = "labelLogo";
-            this.labelLogo.Size = new System.Drawing.Size(111, 32);
+            this.labelLogo.Size = new System.Drawing.Size(127, 31);
             this.labelLogo.TabIndex = 6;
             this.labelLogo.Text = "MyPlayer";
             // 
@@ -248,13 +255,10 @@
             this.playListsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.playListsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.playListsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.playListsTable.Controls.Add(this.panel4, 3, 0);
             this.playListsTable.Controls.Add(this.panel3, 2, 0);
             this.playListsTable.Controls.Add(this.panel1, 0, 0);
             this.playListsTable.Controls.Add(this.panel2, 1, 0);
-            this.playListsTable.Controls.Add(this.button1, 1, 1);
-            this.playListsTable.Controls.Add(this.pictureBox5, 2, 1);
-            this.playListsTable.Location = new System.Drawing.Point(195, 50);
+            this.playListsTable.Location = new System.Drawing.Point(195, 0);
             this.playListsTable.Name = "playListsTable";
             this.playListsTable.RowCount = 3;
             this.playListsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -262,39 +266,6 @@
             this.playListsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.playListsTable.Size = new System.Drawing.Size(1709, 900);
             this.playListsTable.TabIndex = 1;
-            // 
-            // panel4
-            // 
-            this.panel4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.Controls.Add(this.pictureBox4);
-            this.panel4.Location = new System.Drawing.Point(752, 24);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(203, 252);
-            this.panel4.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.label4.Location = new System.Drawing.Point(16, 166);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(170, 73);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Name";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox4.Location = new System.Drawing.Point(16, 16);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(170, 130);
-            this.pictureBox4.TabIndex = 1;
-            this.pictureBox4.TabStop = false;
             // 
             // panel3
             // 
@@ -309,8 +280,9 @@
             // 
             // label3
             // 
-            this.label3.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.label3.Location = new System.Drawing.Point(16, 166);
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.ForeColor = System.Drawing.Color.LightGray;
+            this.label3.Location = new System.Drawing.Point(18, 166);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(170, 73);
             this.label3.TabIndex = 2;
@@ -323,7 +295,7 @@
             this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Location = new System.Drawing.Point(16, 16);
+            this.pictureBox3.Location = new System.Drawing.Point(18, 16);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(170, 130);
             this.pictureBox3.TabIndex = 1;
@@ -333,22 +305,25 @@
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.panel1.Controls.Add(this.listName);
+            this.panel1.Controls.Add(this.listName1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(20, 24);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(203, 252);
             this.panel1.TabIndex = 2;
+            this.panel1.MouseLeave += new System.EventHandler(this.panel1_MouseLeave);
+            this.panel1.MouseHover += new System.EventHandler(this.panel1_MouseHover);
             // 
-            // listName
+            // listName1
             // 
-            this.listName.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.listName.Location = new System.Drawing.Point(16, 163);
-            this.listName.Name = "listName";
-            this.listName.Size = new System.Drawing.Size(170, 73);
-            this.listName.TabIndex = 2;
-            this.listName.Text = "Name";
-            this.listName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.listName1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.listName1.ForeColor = System.Drawing.Color.LightGray;
+            this.listName1.Location = new System.Drawing.Point(16, 163);
+            this.listName1.Name = "listName1";
+            this.listName1.Size = new System.Drawing.Size(170, 73);
+            this.listName1.TabIndex = 2;
+            this.listName1.Text = "Name";
+            this.listName1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 
@@ -375,8 +350,9 @@
             // 
             // label2
             // 
-            this.label2.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.label2.Location = new System.Drawing.Point(16, 163);
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.ForeColor = System.Drawing.Color.LightGray;
+            this.label2.Location = new System.Drawing.Point(17, 162);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(170, 73);
             this.label2.TabIndex = 2;
@@ -389,20 +365,11 @@
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Location = new System.Drawing.Point(16, 16);
+            this.pictureBox2.Location = new System.Drawing.Point(17, 16);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(170, 130);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(247, 303);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(123, 54);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -415,30 +382,80 @@
             // 
             // searchField
             // 
-            this.searchField.Location = new System.Drawing.Point(33, 443);
+            this.searchField.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.searchField.BackColor = System.Drawing.Color.LightGray;
+            this.searchField.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.searchField.Location = new System.Drawing.Point(286, 20);
             this.searchField.Name = "searchField";
-            this.searchField.Size = new System.Drawing.Size(277, 27);
+            this.searchField.PlaceholderText = "  Поиск";
+            this.searchField.Size = new System.Drawing.Size(277, 20);
             this.searchField.TabIndex = 13;
+            this.searchField.Text = "  ";
+            this.searchField.Visible = false;
+            this.searchField.TextChanged += new System.EventHandler(this.searchField_TextChanged);
             // 
-            // pictureBox5
+            // searchFieldWrapper
             // 
-            this.pictureBox5.Location = new System.Drawing.Point(491, 303);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(155, 89);
-            this.pictureBox5.TabIndex = 7;
-            this.pictureBox5.TabStop = false;
+            this.searchFieldWrapper.BackColor = System.Drawing.Color.LightGray;
+            this.searchFieldWrapper.BackColor2 = System.Drawing.Color.LightGray;
+            this.searchFieldWrapper.ButtonBorderColor = System.Drawing.Color.LightGray;
+            this.searchFieldWrapper.ButtonHighlightColor = System.Drawing.Color.LightGray;
+            this.searchFieldWrapper.ButtonHighlightColor2 = System.Drawing.Color.LightGray;
+            this.searchFieldWrapper.ButtonHighlightForeColor = System.Drawing.Color.LightGray;
+            this.searchFieldWrapper.ButtonPressedColor = System.Drawing.Color.LightGray;
+            this.searchFieldWrapper.ButtonPressedColor2 = System.Drawing.Color.LightGray;
+            this.searchFieldWrapper.ButtonPressedForeColor = System.Drawing.Color.LightGray;
+            this.searchFieldWrapper.ButtonRoundRadius = 30;
+            this.searchFieldWrapper.Location = new System.Drawing.Point(247, 1);
+            this.searchFieldWrapper.Name = "searchFieldWrapper";
+            this.searchFieldWrapper.Size = new System.Drawing.Size(342, 34);
+            this.searchFieldWrapper.TabIndex = 6;
+            this.searchFieldWrapper.Visible = false;
+            this.searchFieldWrapper.Click += new System.EventHandler(this.roundButton1_Click);
+            // 
+            // songTimeLine
+            // 
+            this.songTimeLine.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.songTimeLine.AutoSize = false;
+            this.songTimeLine.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.songTimeLine.LargeChange = 1;
+            this.songTimeLine.Location = new System.Drawing.Point(231, 987);
+            this.songTimeLine.Maximum = 180;
+            this.songTimeLine.Name = "songTimeLine";
+            this.songTimeLine.Size = new System.Drawing.Size(1638, 27);
+            this.songTimeLine.SmallChange = 5;
+            this.songTimeLine.TabIndex = 14;
+            this.songTimeLine.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // pictureBoxSearchIcon
+            // 
+            this.pictureBoxSearchIcon.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxSearchIcon.BackColor = System.Drawing.Color.LightGray;
+            this.pictureBoxSearchIcon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxSearchIcon.BackgroundImage")));
+            this.pictureBoxSearchIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxSearchIcon.Location = new System.Drawing.Point(255, 17);
+            this.pictureBoxSearchIcon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBoxSearchIcon.Name = "pictureBoxSearchIcon";
+            this.pictureBoxSearchIcon.Size = new System.Drawing.Size(25, 25);
+            this.pictureBoxSearchIcon.TabIndex = 15;
+            this.pictureBoxSearchIcon.TabStop = false;
+            this.pictureBoxSearchIcon.Visible = false;
+            this.pictureBoxSearchIcon.Click += new System.EventHandler(this.pictureBoxSearchIcon_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.pictureBoxSearchIcon);
+            this.Controls.Add(this.logo);
+            this.Controls.Add(this.songTimeLine);
             this.Controls.Add(this.searchField);
             this.Controls.Add(this.labelMyMedia);
             this.Controls.Add(this.playListsTable);
             this.Controls.Add(this.labelFavoriteTracks);
+            this.Controls.Add(this.searchFieldWrapper);
             this.Controls.Add(this.labelCreatePlayList);
             this.Controls.Add(this.labelSearch);
             this.Controls.Add(this.mediaItem);
@@ -448,11 +465,11 @@
             this.Controls.Add(this.searchIcon);
             this.Controls.Add(this.homeIcon);
             this.Controls.Add(this.favoriteSongs);
-            this.Controls.Add(this.logo);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
+            this.ShowIcon = false;
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -463,15 +480,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.createItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mediaItem)).EndInit();
             this.playListsTable.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.songTimeLine)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSearchIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -494,18 +510,16 @@
         private Label label1;
         private PictureBox pictureBox1;
         private Panel panel1;
-        private Label listName;
-        private Panel panel4;
-        private Label label4;
-        private PictureBox pictureBox4;
+        private Label listName1;
+        private TextBox searchField;
+        private RoundButton searchFieldWrapper;
+        private TrackBar songTimeLine;
+        private PictureBox pictureBoxSearchIcon;
         private Panel panel3;
         private Label label3;
         private PictureBox pictureBox3;
         private Panel panel2;
         private Label label2;
         private PictureBox pictureBox2;
-        private TextBox searchField;
-        private Button button1;
-        private PictureBox pictureBox5;
     }
 }
