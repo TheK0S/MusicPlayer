@@ -4,6 +4,9 @@ namespace MusicPlayer
 {
     public partial class Form1 : Form
     {
+        List<List<string>> playlists;
+
+
         public Form1()
         {
             InitializeComponent();
@@ -13,9 +16,6 @@ namespace MusicPlayer
             panel3.Region = GetRoundedRegion(panel1.ClientRectangle, 20);
 
 
-            //Form2 form2 = new Form2();
-            //form2.Focus();
-            //form2.Show();
 
         }
 
@@ -84,7 +84,9 @@ namespace MusicPlayer
 
         private void labelCreatePlayList_Click(object sender, EventArgs e)
         {
-
+            var createPlayList = new CreatePlayList();
+            createPlayList.Show();
+            this.Visible = false;
         }
 
         private void labelFavoriteTracks_Click(object sender, EventArgs e)
@@ -183,6 +185,11 @@ namespace MusicPlayer
         }
 
         private void roundButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }

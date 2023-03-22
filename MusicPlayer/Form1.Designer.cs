@@ -336,6 +336,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(170, 130);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // panel2
             // 
@@ -419,10 +420,10 @@
             this.songTimeLine.AutoSize = false;
             this.songTimeLine.Cursor = System.Windows.Forms.Cursors.Hand;
             this.songTimeLine.LargeChange = 1;
-            this.songTimeLine.Location = new System.Drawing.Point(231, 987);
+            this.songTimeLine.Location = new System.Drawing.Point(378, 987);
             this.songTimeLine.Maximum = 180;
             this.songTimeLine.Name = "songTimeLine";
-            this.songTimeLine.Size = new System.Drawing.Size(1638, 27);
+            this.songTimeLine.Size = new System.Drawing.Size(1347, 27);
             this.songTimeLine.SmallChange = 5;
             this.songTimeLine.TabIndex = 14;
             this.songTimeLine.TickStyle = System.Windows.Forms.TickStyle.None;
