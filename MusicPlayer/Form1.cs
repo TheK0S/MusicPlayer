@@ -84,8 +84,8 @@ namespace MusicPlayer
 
         private void labelCreatePlayList_Click(object sender, EventArgs e)
         {
-            var createPlayList = new CreatePlayList();
-            createPlayList.Show();
+            Data.formCreatePlayList = new CreatePleyList();
+            Data.formCreatePlayList.Show();
             this.Visible = false;
         }
 

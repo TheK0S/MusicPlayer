@@ -46,6 +46,7 @@
             this.favoriteSongs = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mediaItem)).BeginInit();
@@ -260,12 +261,25 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.LightGray;
+            this.label3.Location = new System.Drawing.Point(291, 691);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(156, 20);
+            this.label3.TabIndex = 45;
+            this.label3.Text = "Сохранить плейлист";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
             // CreatePleyList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox);
@@ -318,5 +332,6 @@
         private PictureBox favoriteSongs;
         private Label label1;
         private OpenFileDialog openFileDialog1;
+        private Label label3;
     }
 }
