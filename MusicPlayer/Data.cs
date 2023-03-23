@@ -47,7 +47,7 @@ namespace MusicPlayer
                     connection.Open();
                     SqlCommand command = new SqlCommand();
 
-                    command.CommandText = "CREATE TABLE MainList(Id INT IDENTITY PRIMARY KEY, ListName NVARCHAR(50) NOT NULL)";
+                    command.CommandText = "CREATE TABLE MainList(Id INT IDENTITY PRIMARY KEY, ListName NVARCHAR(50) UNIQUE)";
                     command.Connection = connection;
                 
                     command.ExecuteNonQuery();
@@ -67,7 +67,7 @@ namespace MusicPlayer
                 try
                 {
                     connection.Open();
-                    SqlCommand command = new SqlCommand($"INSERT INTO MainList VALUES({nameSongsList})", connection);
+                    SqlCommand command = new SqlCommand($"INSERT INTO MainList VALUES('{nameSongsList}')", connection);
 
                     return command.ExecuteNonQuery() > 0;
                 }
@@ -76,6 +76,56 @@ namespace MusicPlayer
                     return false;
                 }
 
+            }
+        }
+
+        public static List<string> ReadFromMainList()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand($"SELECT * FROM MainList", connection);
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    List<string> list = new List<string>();
+
+                    if(reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            list.Add(reader["ListName"].ToString()??"no list name");
+                        }
+                    }
+                    return list;
+                }
+                catch (Exception)
+                {
+                    return new List<string>();
+                }
+
+            }
+        }
+
+        public static bool DeleteSongsListFromMainList(string nameSongsList)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string sqlCommand = $"DELETE FROM MainList WHERE ListName = '{nameSongsList}'";
+
+                    SqlCommand command = new SqlCommand(sqlCommand, connection);
+
+                    return command.ExecuteNonQuery() > 0;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
         }
 
@@ -88,7 +138,7 @@ namespace MusicPlayer
                     connection.Open();
                     SqlCommand command = new SqlCommand();
 
-                    command.CommandText = $"CREATE TABLE {tableName}(Id INT IDENTITY PRIMARY KEY, SongName NVARCHAR(50) NOT NULL)";
+                    command.CommandText = $"CREATE TABLE {tableName}(Id INT IDENTITY PRIMARY KEY, SongName NVARCHAR(50) UNIQUE)";
                     command.Connection = connection;
 
                     command.ExecuteNonQuery();
@@ -128,5 +178,55 @@ namespace MusicPlayer
 
             }
         }
+
+        public static List<string> ReadFromSongsList(string nameSongsList)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand($"SELECT * FROM {nameSongsList}", connection);
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    List<string> list = new List<string>();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            list.Add(reader["SongName"].ToString() ?? "no list name");
+                        }
+                    }
+                    return list;
+                }
+                catch (Exception)
+                {
+                    return new List<string>();
+                }
+
+            }
+        }
+
+        public static bool DeleteSongFromSongsList(string songName,string nameSongsList)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string sqlCommand = $"DELETE FROM {nameSongsList} WHERE SongName = '{songName}'";
+
+                    SqlCommand command = new SqlCommand(sqlCommand, connection);
+
+                    return command.ExecuteNonQuery() > 0;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }        
     }
 }

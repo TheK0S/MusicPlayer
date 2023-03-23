@@ -40,7 +40,12 @@ namespace MusicPlayer
 
         private void label3_Click(object sender, EventArgs e)
         {
+            string[] songs = { "song_1", "song_2", "song_3" };
             Data.CreateSQLDataBase();
+            Data.CreateTableForMainList();
+            Data.CreateTableForSongsList("myList");
+            Data.AddToMainList("myList");
+            Data.AddToSongsList("myList", songs);
         }
     }
 }
