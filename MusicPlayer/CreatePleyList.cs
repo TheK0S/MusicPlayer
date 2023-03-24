@@ -14,9 +14,20 @@ namespace MusicPlayer
     public partial class CreatePleyList : Form
     {
         string[] songs;
+
         public CreatePleyList()
         {
             InitializeComponent();
+        }
+
+        List<string> GetListSongs()
+        {
+            List<string> list = new List<string>();
+
+            foreach (var item in songs)
+                list.Add(item);
+
+            return list;
         }
 
         private void pictureBox_Click(object sender, EventArgs e)
@@ -47,7 +58,7 @@ namespace MusicPlayer
             Data.CreateTableForMainList();
             Data.CreateTableForSongsList(listName.Text);
             Data.AddToMainList(listName.Text);
-            Data.AddToSongsList(listName.Text, songs);
+            Data.AddToSongsList(listName.Text, GetListSongs());
             
         }
 

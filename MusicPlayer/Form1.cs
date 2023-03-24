@@ -6,13 +6,65 @@ namespace MusicPlayer
 {
     public partial class Form1 : Form
     {
+        int songIndex = 0;
+        int listIndex = 0;
         public Form1()
         {
             InitializeComponent();
 
-            flowLayoutPanel1.Region = GetRoundedRegion(flowLayoutPanel1.ClientRectangle, 20);
-            
+            flowLayoutPanel01.Region = GetRoundedRegion(flowLayoutPanel01.ClientRectangle, 20);
+            flowLayoutPanel02.Region = GetRoundedRegion(flowLayoutPanel02.ClientRectangle, 20);
+            flowLayoutPanel03.Region = GetRoundedRegion(flowLayoutPanel03.ClientRectangle, 20);
+            flowLayoutPanel04.Region = GetRoundedRegion(flowLayoutPanel04.ClientRectangle, 20);
+            flowLayoutPanel05.Region = GetRoundedRegion(flowLayoutPanel05.ClientRectangle, 20);
+            flowLayoutPanel06.Region = GetRoundedRegion(flowLayoutPanel06.ClientRectangle, 20);
+            flowLayoutPanel07.Region = GetRoundedRegion(flowLayoutPanel07.ClientRectangle, 20);
+            activeList.Region = GetRoundedRegion(activeList.ClientRectangle, 20);
+            prev.Region = GetRoundedRegion(prev.ClientRectangle, 20);
+            play.Region = GetRoundedRegion(play.ClientRectangle, 20);
+            stop.Region = GetRoundedRegion(stop.ClientRectangle, 20);
+            next.Region = GetRoundedRegion(next.ClientRectangle, 20);
 
+        }
+
+        List<FlowLayoutPanel> GetPanelsList()
+        {
+            List<FlowLayoutPanel> list = new List<FlowLayoutPanel>();
+            list.Add(flowLayoutPanel01);
+            list.Add(flowLayoutPanel02);
+            list.Add(flowLayoutPanel03);
+            list.Add(flowLayoutPanel04);
+            list.Add(flowLayoutPanel05);
+            list.Add(flowLayoutPanel06);
+            list.Add(flowLayoutPanel07);
+            return list;
+        }
+
+        List<Label> GetLabelsList()
+        {
+            List<Label> list = new List<Label>();
+            list.Add(label01);
+            list.Add(label02);
+            list.Add(label03);
+            list.Add(label04);
+            list.Add(label05);
+            list.Add(label06);
+            list.Add(label07);
+            return list;
+        }
+
+        void SetVisibleFromPanels()
+        {
+            List<FlowLayoutPanel> list = GetPanelsList();
+            for (int i = 0; i < Data.MainList.Count; i++)              
+                list[i].Visible = true;
+        }
+
+        void SetNameListPanels()
+        {
+            List<Label> list = GetLabelsList();
+            for (int i = 0; i < Data.MainList.Count; i++)                
+                list[i].Text = Data.MainList[i].Name;
         }
 
         public static Region GetRoundedRegion(Rectangle rect, int d)
@@ -43,10 +95,13 @@ namespace MusicPlayer
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            List<string> mainList = Data.ReadFromMainList();
+            //Data.MainList = new List<SongList>();
 
-            foreach (var item in mainList)
-                Data.dictLists.Add(item, Data.ReadFromSongsList(item));
+            Data.ReadDataFromDB();
+
+            SetVisibleFromPanels();
+
+            SetNameListPanels();
 
             //PictureBox pictureBox1 = new PictureBox()
             //{
@@ -99,14 +154,12 @@ namespace MusicPlayer
             {
                 playListsTable.Location = new Point(playListsTable.Location.X, 50);
                 searchField.Visible = true;
-                searchFieldWrapper.Visible = true;
                 pictureBoxSearchIcon.Visible = true;
             }
             else
             {
                 playListsTable.Location = new Point(playListsTable.Location.X, 0);
                 searchField.Visible = false;
-                searchFieldWrapper.Visible = false;
                 pictureBoxSearchIcon.Visible = false;
             }
         }
@@ -116,7 +169,6 @@ namespace MusicPlayer
             playListsTable.Visible = false;
 
             searchField.Visible = false;
-            searchFieldWrapper.Visible = false;
             pictureBoxSearchIcon.Visible = false;
         }
 
@@ -134,12 +186,12 @@ namespace MusicPlayer
 
         private void panel1_MouseHover(object sender, EventArgs e)
         {
-            flowLayoutPanel1.BackColor = Color.FromArgb(40, 40, 40);
+            flowLayoutPanel03.BackColor = Color.FromArgb(40, 40, 40);
         }
 
         private void panel1_MouseLeave(object sender, EventArgs e)
         {
-            flowLayoutPanel1.BackColor = Color.FromArgb(25,25,25);
+            flowLayoutPanel03.BackColor = Color.FromArgb(25,25,25);
         }
 
         private void labelMain_MouseHover(object sender, EventArgs e)
@@ -234,12 +286,12 @@ namespace MusicPlayer
 
         private void flowLayoutPanel1_MouseHover(object sender, EventArgs e)
         {
-            flowLayoutPanel1.BackColor = Color.FromArgb(40, 40, 40);
+            flowLayoutPanel03.BackColor = Color.FromArgb(40, 40, 40);
         }
 
         private void flowLayoutPanel1_MouseLeave(object sender, EventArgs e)
         {
-            flowLayoutPanel1.BackColor = Color.FromArgb(25, 25, 25);
+            flowLayoutPanel03.BackColor = Color.FromArgb(25, 25, 25);
         }
 
         private void playListsTable_Paint(object sender, PaintEventArgs e)
@@ -249,20 +301,141 @@ namespace MusicPlayer
 
         private void play_Click(object sender, EventArgs e)
         {
-            Data.player.SoundLocation = Data.dictLists["myList"][1];
+            if(songIndex < Data.MainList[listIndex].Songs.Count)
+            {
+                Data.player.SoundLocation = Data.MainList[listIndex].Songs[songIndex];
+                Data.player.Load();
+                Data.player.Play();
+            }            
         }
 
         private void listName1_Click(object sender, EventArgs e)
         {
-            Data.player.SoundLocation = Data.dictLists["myList"].FirstOrDefault();
+            Data.player.SoundLocation = Data.MainList[0].Songs[0];
             Data.player.Load();
-            Data.player.Play();
-            songTimeLine.Maximum = 19;
+            Data.player.Play();            
         }
 
         private void stop_Click(object sender, EventArgs e)
         {
             Data.player.Stop();
+        }
+
+        private void next_Click(object sender, EventArgs e)
+        {
+            if(++songIndex >= Data.MainList.Count)
+                songIndex = 0;
+            Data.player.SoundLocation = Data.MainList[listIndex].Songs[songIndex];
+            Data.player.Load();
+            Data.player.Play();
+        }
+
+        private void prev_Click(object sender, EventArgs e)
+        {
+            if (--songIndex < 0)
+                songIndex = Data.MainList.Count - 1;
+            Data.player.SoundLocation = Data.MainList[listIndex].Songs[songIndex];
+            Data.player.Load();
+            Data.player.Play();
+        }
+
+        private void Form1_VisibleChanged(object sender, EventArgs e)
+        {
+            Data.ReadDataFromDB();
+            SetVisibleFromPanels();
+            SetNameListPanels();
+        }
+
+        private void label01_Click(object sender, EventArgs e)
+        {
+            listIndex = 0;
+            activeList.Text = label01.Text;
+        }
+
+        private void label02_Click(object sender, EventArgs e)
+        {
+            listIndex = 1;
+            activeList.Text = label02.Text;
+        }
+
+        private void label03_Click(object sender, EventArgs e)
+        {
+            listIndex = 2;
+            activeList.Text = label03.Text;
+        }
+
+        private void label04_Click(object sender, EventArgs e)
+        {
+            listIndex = 3;
+            activeList.Text = label04.Text;
+        }
+
+        private void label05_Click(object sender, EventArgs e)
+        {
+            listIndex = 4;
+            activeList.Text = label05.Text;
+        }
+
+        private void label06_Click(object sender, EventArgs e)
+        {
+            listIndex = 5;
+            activeList.Text = label06.Text;
+        }
+
+        private void label07_Click(object sender, EventArgs e)
+        {
+            listIndex = 6;
+            activeList.Text = label07.Text;
+        }
+
+        private void label01_MouseHover(object sender, EventArgs e)
+        {
+            flowLayoutPanel01.BackColor = Color.FromArgb(40, 40, 40);
+        }
+
+        private void label01_MouseLeave(object sender, EventArgs e)
+        {
+            flowLayoutPanel01.BackColor = Color.FromArgb(25, 25, 25);
+        }
+
+        private void label02_MouseHover(object sender, EventArgs e)
+        {
+            flowLayoutPanel02.BackColor = Color.FromArgb(40, 40, 40);
+        }
+
+        private void label02_MouseLeave(object sender, EventArgs e)
+        {
+            flowLayoutPanel02.BackColor = Color.FromArgb(25, 25, 25);
+        }
+
+        private void label03_MouseHover(object sender, EventArgs e)
+        {
+            flowLayoutPanel03.BackColor = Color.FromArgb(40, 40, 40);
+        }
+
+        private void label03_MouseLeave(object sender, EventArgs e)
+        {
+            flowLayoutPanel03.BackColor = Color.FromArgb(25, 25, 25);
+        }
+
+        private void label04_MouseHover(object sender, EventArgs e)
+        {
+            flowLayoutPanel05.BackColor = Color.FromArgb(40, 40, 40);
+        }
+
+        private void label04_MouseLeave(object sender, EventArgs e)
+        {
+            flowLayoutPanel04.BackColor = Color.FromArgb(25, 25, 25);
+        }
+
+        private void label05_MouseHover(object sender, EventArgs e)
+        {
+            flowLayoutPanel05.BackColor = Color.FromArgb(40, 40, 40);
+        }
+
+        private void label05_MouseLeave(object sender, EventArgs e)
+        {
+            flowLayoutPanel05.BackColor = Color.FromArgb(25, 25, 25);
         }
     }
 }

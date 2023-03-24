@@ -12,11 +12,11 @@ namespace MusicPlayer
     {
         public static Form1? form1;
         public static CreatePleyList? formCreatePlayList;
-        public static Dictionary<string, List<string>> dictLists = new Dictionary<string, List<string>>();
+        public static List<SongList> MainList = new List<SongList>();
         public static SoundPlayer player = new SoundPlayer();
-
-        static string connectionStringFromDB = @"Data Source = DESKTOP-HHO6PH0; Initial Catalog = master; Trusted_Connection=True; Encrypt = False";
-        static string connectionString = @"Data Source = DESKTOP-HHO6PH0; Initial Catalog = MusicPlayerDB; Trusted_Connection=True; Encrypt = False";
+        //Encrypt = False
+        static string connectionStringFromDB = @"Data Source = DESKTOP-K60TA32\SQLEXPRESS; Initial Catalog = master; Trusted_Connection=True; Encrypt = False";
+        static string connectionString = @"Data Source = DESKTOP-K60TA32\SQLEXPRESS; Initial Catalog = MusicPlayerDB; Trusted_Connection=True; Encrypt = False";
 
         public static bool CreateSQLDataBase()
         {
@@ -50,7 +50,7 @@ namespace MusicPlayer
                     connection.Open();
                     SqlCommand command = new SqlCommand();
 
-                    command.CommandText = "CREATE TABLE MainList(Id INT IDENTITY PRIMARY KEY, ListName NVARCHAR(50) UNIQUE)";
+                    command.CommandText = "CREATE TABLE MainList(Id INT IDENTITY PRIMARY KEY, ListName NVARCHAR(100) UNIQUE)";
                     command.Connection = connection;
                 
                     command.ExecuteNonQuery();
@@ -141,7 +141,7 @@ namespace MusicPlayer
                     connection.Open();
                     SqlCommand command = new SqlCommand();
 
-                    command.CommandText = $"CREATE TABLE {tableName}(Id INT IDENTITY PRIMARY KEY, SongName NVARCHAR(50) UNIQUE)";
+                    command.CommandText = $"CREATE TABLE {tableName}(Id INT IDENTITY PRIMARY KEY, SongName NVARCHAR(1000) UNIQUE)";
                     command.Connection = connection;
 
                     command.ExecuteNonQuery();
@@ -154,7 +154,7 @@ namespace MusicPlayer
             }
         }
 
-        public static bool AddToSongsList(string nameSongsList, string[] songs)
+        public static bool AddToSongsList(string nameSongsList, List<string> songs)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -163,10 +163,10 @@ namespace MusicPlayer
                     connection.Open();
                     string sqlCommand = $"INSERT INTO {nameSongsList} VALUES";
                     
-                    for (int i = 0; i < songs.Length; i++)
+                    for (int i = 0; i < songs.Count; i++)
                     {
                         sqlCommand += $"('{songs[i]}')";
-                        if (i != songs.Length - 1)
+                        if (i != songs.Count - 1)
                             sqlCommand += ", ";
                     }
 
@@ -182,7 +182,7 @@ namespace MusicPlayer
             }
         }
 
-        public static List<string> ReadFromSongsList(string nameSongsList)
+        public static SongList ReadFromSongsList(string nameSongsList)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -202,11 +202,11 @@ namespace MusicPlayer
                             list.Add(reader["SongName"].ToString() ?? "no list name");
                         }
                     }
-                    return list;
+                    return new SongList(nameSongsList, list);
                 }
                 catch (Exception)
                 {
-                    return new List<string>();
+                    return new SongList("", new List<string>());
                 }
 
             }
@@ -231,5 +231,32 @@ namespace MusicPlayer
                 }
             }
         }        
+
+        public static void WriteDataToDB()
+        {
+            CreateSQLDataBase();
+            CreateTableForMainList();
+            foreach (var item in MainList)
+            {
+                AddToMainList(item.Name);
+                CreateTableForSongsList(item.Name);
+                AddToSongsList(item.Name, item.Songs);
+            }
+        }
+
+        public static void ReadDataFromDB()
+        {
+            List<string> list = ReadFromMainList();
+            MainList = new List<SongList>();
+            if(list?.Count > 0)
+            {
+                foreach (var item in list)
+                {
+                    SongList songList = ReadFromSongsList(item);
+                    if (!MainList.Contains(songList))
+                        MainList.Add(songList);
+                }
+            }
+        }
     }
 }
