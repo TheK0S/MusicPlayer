@@ -1,21 +1,17 @@
 using System.Drawing.Drawing2D;
+using System.Drawing.Printing;
+using System.Media;
 
 namespace MusicPlayer
 {
     public partial class Form1 : Form
     {
-        List<List<string>> playlists;
-
-
         public Form1()
         {
             InitializeComponent();
 
-            panel1.Region = GetRoundedRegion(panel1.ClientRectangle, 20);
-            panel2.Region = GetRoundedRegion(panel1.ClientRectangle, 20);
-            panel3.Region = GetRoundedRegion(panel1.ClientRectangle, 20);
-
-
+            flowLayoutPanel1.Region = GetRoundedRegion(flowLayoutPanel1.ClientRectangle, 20);
+            
 
         }
 
@@ -47,6 +43,48 @@ namespace MusicPlayer
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            List<string> mainList = Data.ReadFromMainList();
+
+            foreach (var item in mainList)
+                Data.dictLists.Add(item, Data.ReadFromSongsList(item));
+
+            //PictureBox pictureBox1 = new PictureBox()
+            //{
+            //    BackColor = Color.FromArgb(25, 25, 25),
+            //    Margin = new Padding(10, 10, 10, 10),
+            //    Size = new Size(170, 130),
+            //    Dock = DockStyle.Top,
+            //    Anchor = AnchorStyles.Top
+            //};
+
+            //Label label1 = new Label()
+            //{
+            //    BackColor = Color.FromArgb(25, 25, 25),
+            //    Margin = new Padding(10, 10, 10, 10),
+            //    ForeColor = Color.LightGray,
+            //    Text = "List_1",
+            //    AutoSize = false,
+            //    Dock = DockStyle.Bottom,
+            //    Anchor = AnchorStyles.Bottom
+            //};
+
+            //FlowLayoutPanel panel1 = new FlowLayoutPanel()
+            //{
+            //    Padding = new Padding(10, 10, 10, 10),
+            //    Dock = DockStyle.None,
+            //    Anchor = AnchorStyles.None
+            //};
+            //panel1.Controls.Add(pictureBox1);
+            //panel1.Controls.Add(label1);
+
+            //foreach (var item in Data.dictLists)
+            //{
+
+            //}
+
+            //playListsTable.Controls.Add(panel1, 0, 0);
+
+
 
         }
 
@@ -96,12 +134,12 @@ namespace MusicPlayer
 
         private void panel1_MouseHover(object sender, EventArgs e)
         {
-            panel1.BackColor = Color.FromArgb(40, 40, 40);
+            flowLayoutPanel1.BackColor = Color.FromArgb(40, 40, 40);
         }
 
         private void panel1_MouseLeave(object sender, EventArgs e)
         {
-            panel1.BackColor = Color.FromArgb(25,25,25);
+            flowLayoutPanel1.BackColor = Color.FromArgb(25,25,25);
         }
 
         private void labelMain_MouseHover(object sender, EventArgs e)
@@ -192,6 +230,39 @@ namespace MusicPlayer
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void flowLayoutPanel1_MouseHover(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.BackColor = Color.FromArgb(40, 40, 40);
+        }
+
+        private void flowLayoutPanel1_MouseLeave(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.BackColor = Color.FromArgb(25, 25, 25);
+        }
+
+        private void playListsTable_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void play_Click(object sender, EventArgs e)
+        {
+            Data.player.SoundLocation = Data.dictLists["myList"][1];
+        }
+
+        private void listName1_Click(object sender, EventArgs e)
+        {
+            Data.player.SoundLocation = Data.dictLists["myList"].FirstOrDefault();
+            Data.player.Load();
+            Data.player.Play();
+            songTimeLine.Maximum = 19;
+        }
+
+        private void stop_Click(object sender, EventArgs e)
+        {
+            Data.player.Stop();
         }
     }
 }

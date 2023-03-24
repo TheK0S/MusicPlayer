@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +12,8 @@ namespace MusicPlayer
     {
         public static Form1? form1;
         public static CreatePleyList? formCreatePlayList;
+        public static Dictionary<string, List<string>> dictLists = new Dictionary<string, List<string>>();
+        public static SoundPlayer player = new SoundPlayer();
 
         static string connectionStringFromDB = @"Data Source = DESKTOP-HHO6PH0; Initial Catalog = master; Trusted_Connection=True; Encrypt = False";
         static string connectionString = @"Data Source = DESKTOP-HHO6PH0; Initial Catalog = MusicPlayerDB; Trusted_Connection=True; Encrypt = False";

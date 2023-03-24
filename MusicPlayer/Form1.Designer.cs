@@ -42,20 +42,19 @@
             this.createItem = new System.Windows.Forms.PictureBox();
             this.mediaItem = new System.Windows.Forms.PictureBox();
             this.playListsTable = new System.Windows.Forms.TableLayoutPanel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.listName1 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.listName1 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.searchField = new System.Windows.Forms.TextBox();
             this.searchFieldWrapper = new MusicPlayer.RoundButton();
             this.songTimeLine = new System.Windows.Forms.TrackBar();
             this.pictureBoxSearchIcon = new System.Windows.Forms.PictureBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.play = new System.Windows.Forms.Button();
+            this.next = new System.Windows.Forms.Button();
+            this.prev = new System.Windows.Forms.Button();
+            this.stop = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.favoriteSongs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.homeIcon)).BeginInit();
@@ -63,12 +62,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.createItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mediaItem)).BeginInit();
             this.playListsTable.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.songTimeLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSearchIcon)).BeginInit();
             this.SuspendLayout();
@@ -246,7 +241,6 @@
             // 
             // playListsTable
             // 
-            this.playListsTable.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.playListsTable.ColumnCount = 7;
             this.playListsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.playListsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
@@ -255,9 +249,7 @@
             this.playListsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.playListsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.playListsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.playListsTable.Controls.Add(this.panel3, 2, 0);
-            this.playListsTable.Controls.Add(this.panel1, 0, 0);
-            this.playListsTable.Controls.Add(this.panel2, 1, 0);
+            this.playListsTable.Controls.Add(this.flowLayoutPanel1, 0, 0);
             this.playListsTable.Location = new System.Drawing.Point(195, 0);
             this.playListsTable.Name = "playListsTable";
             this.playListsTable.RowCount = 3;
@@ -266,64 +258,18 @@
             this.playListsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.playListsTable.Size = new System.Drawing.Size(1709, 900);
             this.playListsTable.TabIndex = 1;
+            this.playListsTable.Paint += new System.Windows.Forms.PaintEventHandler(this.playListsTable_Paint);
             // 
-            // panel3
+            // flowLayoutPanel1
             // 
-            this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.pictureBox3);
-            this.panel3.Location = new System.Drawing.Point(508, 24);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(203, 252);
-            this.panel3.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.ForeColor = System.Drawing.Color.LightGray;
-            this.label3.Location = new System.Drawing.Point(18, 166);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(170, 73);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Name";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Location = new System.Drawing.Point(18, 16);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(170, 130);
-            this.pictureBox3.TabIndex = 1;
-            this.pictureBox3.TabStop = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.panel1.Controls.Add(this.listName1);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(20, 24);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(203, 252);
-            this.panel1.TabIndex = 2;
-            this.panel1.MouseLeave += new System.EventHandler(this.panel1_MouseLeave);
-            this.panel1.MouseHover += new System.EventHandler(this.panel1_MouseHover);
-            // 
-            // listName1
-            // 
-            this.listName1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.listName1.ForeColor = System.Drawing.Color.LightGray;
-            this.listName1.Location = new System.Drawing.Point(16, 163);
-            this.listName1.Name = "listName1";
-            this.listName1.Size = new System.Drawing.Size(170, 73);
-            this.listName1.TabIndex = 2;
-            this.listName1.Text = "Name";
-            this.listName1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.flowLayoutPanel1.Controls.Add(this.pictureBox1);
+            this.flowLayoutPanel1.Controls.Add(this.listName1);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(25, 25);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(25);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(194, 250);
+            this.flowLayoutPanel1.TabIndex = 5;
             // 
             // pictureBox1
             // 
@@ -331,46 +277,26 @@
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 16);
+            this.pictureBox1.Location = new System.Drawing.Point(15, 15);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(15);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(170, 130);
+            this.pictureBox1.Size = new System.Drawing.Size(164, 130);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // panel2
+            // listName1
             // 
-            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Location = new System.Drawing.Point(264, 24);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(203, 252);
-            this.panel2.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.ForeColor = System.Drawing.Color.LightGray;
-            this.label2.Location = new System.Drawing.Point(17, 162);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(170, 73);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Name";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Location = new System.Drawing.Point(17, 16);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(170, 130);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.listName1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.listName1.ForeColor = System.Drawing.Color.LightGray;
+            this.listName1.Location = new System.Drawing.Point(15, 160);
+            this.listName1.Margin = new System.Windows.Forms.Padding(15, 0, 15, 15);
+            this.listName1.Name = "listName1";
+            this.listName1.Size = new System.Drawing.Size(164, 73);
+            this.listName1.TabIndex = 2;
+            this.listName1.Text = "Name";
+            this.listName1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.listName1.Click += new System.EventHandler(this.listName1_Click);
             // 
             // label1
             // 
@@ -443,12 +369,54 @@
             this.pictureBoxSearchIcon.Visible = false;
             this.pictureBoxSearchIcon.Click += new System.EventHandler(this.pictureBoxSearchIcon_Click);
             // 
+            // play
+            // 
+            this.play.Location = new System.Drawing.Point(1017, 931);
+            this.play.Name = "play";
+            this.play.Size = new System.Drawing.Size(75, 40);
+            this.play.TabIndex = 16;
+            this.play.Text = "Play";
+            this.play.UseVisualStyleBackColor = true;
+            this.play.Click += new System.EventHandler(this.play_Click);
+            // 
+            // next
+            // 
+            this.next.Location = new System.Drawing.Point(1227, 931);
+            this.next.Name = "next";
+            this.next.Size = new System.Drawing.Size(75, 40);
+            this.next.TabIndex = 17;
+            this.next.Text = "Next";
+            this.next.UseVisualStyleBackColor = true;
+            // 
+            // prev
+            // 
+            this.prev.Location = new System.Drawing.Point(909, 931);
+            this.prev.Name = "prev";
+            this.prev.Size = new System.Drawing.Size(75, 40);
+            this.prev.TabIndex = 18;
+            this.prev.Text = "Prev";
+            this.prev.UseVisualStyleBackColor = true;
+            // 
+            // stop
+            // 
+            this.stop.Location = new System.Drawing.Point(1125, 931);
+            this.stop.Name = "stop";
+            this.stop.Size = new System.Drawing.Size(75, 40);
+            this.stop.TabIndex = 19;
+            this.stop.Text = "Stop";
+            this.stop.UseVisualStyleBackColor = true;
+            this.stop.Click += new System.EventHandler(this.stop_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.stop);
+            this.Controls.Add(this.prev);
+            this.Controls.Add(this.next);
+            this.Controls.Add(this.play);
             this.Controls.Add(this.pictureBoxSearchIcon);
             this.Controls.Add(this.logo);
             this.Controls.Add(this.songTimeLine);
@@ -481,12 +449,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.createItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mediaItem)).EndInit();
             this.playListsTable.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.panel1.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.songTimeLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSearchIcon)).EndInit();
             this.ResumeLayout(false);
@@ -510,17 +474,16 @@
         private TableLayoutPanel playListsTable;
         private Label label1;
         private PictureBox pictureBox1;
-        private Panel panel1;
         private Label listName1;
         private TextBox searchField;
         private RoundButton searchFieldWrapper;
         private TrackBar songTimeLine;
         private PictureBox pictureBoxSearchIcon;
-        private Panel panel3;
-        private Label label3;
-        private PictureBox pictureBox3;
-        private Panel panel2;
-        private Label label2;
-        private PictureBox pictureBox2;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Button play;
+        private Button next;
+        private Button prev;
+        private Button stop;
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreatePleyList));
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.listName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.logo = new System.Windows.Forms.PictureBox();
@@ -47,6 +47,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label3 = new System.Windows.Forms.Label();
+            this.labelDragDrop = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.songsShow = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mediaItem)).BeginInit();
@@ -54,27 +57,28 @@
             ((System.ComponentModel.ISupportInitialize)(this.searchIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.homeIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.favoriteSongs)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // listName
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.ForeColor = System.Drawing.Color.LightGray;
-            this.textBox1.Location = new System.Drawing.Point(608, 198);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(835, 54);
-            this.textBox1.TabIndex = 44;
-            this.textBox1.Text = "Мой плейлист №";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.listName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.listName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listName.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.listName.ForeColor = System.Drawing.Color.LightGray;
+            this.listName.Location = new System.Drawing.Point(594, 136);
+            this.listName.Name = "listName";
+            this.listName.Size = new System.Drawing.Size(835, 54);
+            this.listName.TabIndex = 44;
+            this.listName.Text = "Мой плейлист №";
+            this.listName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.LightGray;
-            this.label2.Location = new System.Drawing.Point(608, 103);
+            this.label2.Location = new System.Drawing.Point(594, 83);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 21);
             this.label2.TabIndex = 43;
@@ -84,9 +88,9 @@
             // 
             this.pictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox.BackgroundImage")));
             this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox.Location = new System.Drawing.Point(219, 12);
+            this.pictureBox.Location = new System.Drawing.Point(248, 42);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(350, 350);
+            this.pictureBox.Size = new System.Drawing.Size(298, 247);
             this.pictureBox.TabIndex = 42;
             this.pictureBox.TabStop = false;
             this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
@@ -266,12 +270,48 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.LightGray;
-            this.label3.Location = new System.Drawing.Point(291, 691);
+            this.label3.Location = new System.Drawing.Point(594, 252);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(156, 20);
             this.label3.TabIndex = 45;
             this.label3.Text = "Сохранить плейлист";
             this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // labelDragDrop
+            // 
+            this.labelDragDrop.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelDragDrop.ForeColor = System.Drawing.Color.LightGray;
+            this.labelDragDrop.Location = new System.Drawing.Point(153, 225);
+            this.labelDragDrop.Margin = new System.Windows.Forms.Padding(10);
+            this.labelDragDrop.Name = "labelDragDrop";
+            this.labelDragDrop.Size = new System.Drawing.Size(261, 51);
+            this.labelDragDrop.TabIndex = 0;
+            this.labelDragDrop.Text = "Перетащи файлы сюда";
+            this.labelDragDrop.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            this.panel1.AllowDrop = true;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.panel1.Controls.Add(this.labelDragDrop);
+            this.panel1.Location = new System.Drawing.Point(1330, 374);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(531, 528);
+            this.panel1.TabIndex = 46;
+            this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel1_DragDrop);
+            this.panel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel1_DragEnter);
+            this.panel1.DragLeave += new System.EventHandler(this.panel1_DragLeave);
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // songsShow
+            // 
+            this.songsShow.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.songsShow.ForeColor = System.Drawing.Color.LightGray;
+            this.songsShow.Location = new System.Drawing.Point(248, 374);
+            this.songsShow.Margin = new System.Windows.Forms.Padding(10);
+            this.songsShow.Name = "songsShow";
+            this.songsShow.Size = new System.Drawing.Size(1025, 528);
+            this.songsShow.TabIndex = 47;
             // 
             // CreatePleyList
             // 
@@ -279,8 +319,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.songsShow);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.listName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.logo);
@@ -300,6 +342,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "CreatePleyList";
             this.Text = "CreatePleyList";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreatePleyList_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
@@ -308,6 +351,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.searchIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.homeIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.favoriteSongs)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,7 +359,7 @@
 
         #endregion
 
-        private TextBox textBox1;
+        private TextBox listName;
         private Label label2;
         private PictureBox pictureBox;
         private PictureBox logo;
@@ -333,5 +377,8 @@
         private Label label1;
         private OpenFileDialog openFileDialog1;
         private Label label3;
+        private Label labelDragDrop;
+        private Panel panel1;
+        private Label songsShow;
     }
 }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,6 +13,7 @@ namespace MusicPlayer
 {
     public partial class CreatePleyList : Form
     {
+        string[] songs;
         public CreatePleyList()
         {
             InitializeComponent();
@@ -40,12 +42,40 @@ namespace MusicPlayer
 
         private void label3_Click(object sender, EventArgs e)
         {
-            string[] songs = { "song_1", "song_2", "song_3" };
+            
             Data.CreateSQLDataBase();
             Data.CreateTableForMainList();
-            Data.CreateTableForSongsList("myList");
-            Data.AddToMainList("myList");
-            Data.AddToSongsList("myList", songs);
+            Data.CreateTableForSongsList(listName.Text);
+            Data.AddToMainList(listName.Text);
+            Data.AddToSongsList(listName.Text, songs);
+            
+        }
+
+        private void panel1_DragEnter(object sender, DragEventArgs e)
+        {
+            if(e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                labelDragDrop.Text = "Отпусти мышь";
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
+
+        private void panel1_DragLeave(object sender, EventArgs e)
+        {
+            labelDragDrop.Text = "Перетащи файл сюда";
+        }
+
+        private void panel1_DragDrop(object sender, DragEventArgs e)
+        {
+            songs = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (string file in songs)
+                if(Regex.IsMatch(file, @"\w*wav$"))
+                    songsShow.Text += file + "\n";                
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
