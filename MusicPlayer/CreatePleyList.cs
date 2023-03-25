@@ -25,7 +25,8 @@ namespace MusicPlayer
             List<string> list = new List<string>();
 
             foreach (var item in songs)
-                list.Add(item);
+                if (Regex.IsMatch(item, @"\w*wav$"))
+                    list.Add(item);
 
             return list;
         }

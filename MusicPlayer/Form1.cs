@@ -72,10 +72,9 @@ namespace MusicPlayer
         {
             int i = songPath.Length - 3;
             while (i > 0)
-            {
                 if(songPath[--i] == '\\')
                     return songPath.Remove(0, i+1);
-            }
+
             return songPath;
         }
 
