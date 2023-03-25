@@ -78,8 +78,8 @@
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.songTimeLine = new System.Windows.Forms.TrackBar();
             this.activeList = new System.Windows.Forms.Label();
+            this.CurrentSong = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.favoriteSongs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.homeIcon)).BeginInit();
@@ -107,7 +107,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.flowLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.songTimeLine)).BeginInit();
             this.SuspendLayout();
             // 
             // labelMyMedia
@@ -762,30 +761,27 @@
             this.label3.Text = "Name";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // songTimeLine
-            // 
-            this.songTimeLine.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.songTimeLine.AutoSize = false;
-            this.songTimeLine.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.songTimeLine.LargeChange = 1;
-            this.songTimeLine.Location = new System.Drawing.Point(378, 987);
-            this.songTimeLine.Maximum = 180;
-            this.songTimeLine.Name = "songTimeLine";
-            this.songTimeLine.Size = new System.Drawing.Size(1347, 27);
-            this.songTimeLine.SmallChange = 5;
-            this.songTimeLine.TabIndex = 14;
-            this.songTimeLine.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
             // activeList
             // 
             this.activeList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.activeList.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.activeList.ForeColor = System.Drawing.Color.DarkGray;
-            this.activeList.Location = new System.Drawing.Point(909, 814);
+            this.activeList.Location = new System.Drawing.Point(909, 757);
             this.activeList.Name = "activeList";
             this.activeList.Size = new System.Drawing.Size(393, 33);
             this.activeList.TabIndex = 20;
             this.activeList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // CurrentSong
+            // 
+            this.CurrentSong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.CurrentSong.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CurrentSong.ForeColor = System.Drawing.Color.DarkGray;
+            this.CurrentSong.Location = new System.Drawing.Point(731, 826);
+            this.CurrentSong.Name = "CurrentSong";
+            this.CurrentSong.Size = new System.Drawing.Size(770, 33);
+            this.CurrentSong.TabIndex = 21;
+            this.CurrentSong.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -793,6 +789,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.CurrentSong);
             this.Controls.Add(this.activeList);
             this.Controls.Add(this.stop);
             this.Controls.Add(this.prev);
@@ -800,7 +797,6 @@
             this.Controls.Add(this.play);
             this.Controls.Add(this.pictureBoxSearchIcon);
             this.Controls.Add(this.logo);
-            this.Controls.Add(this.songTimeLine);
             this.Controls.Add(this.searchField);
             this.Controls.Add(this.labelMyMedia);
             this.Controls.Add(this.playListsTable);
@@ -850,7 +846,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.flowLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.songTimeLine)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -907,7 +902,7 @@
         private FlowLayoutPanel flowLayoutPanel03;
         private PictureBox pictureBox03;
         private Label label03;
-        private TrackBar songTimeLine;
         private Label activeList;
+        private Label CurrentSong;
     }
 }

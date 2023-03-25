@@ -24,6 +24,7 @@ namespace MusicPlayer
             play.Region = GetRoundedRegion(play.ClientRectangle, 20);
             stop.Region = GetRoundedRegion(stop.ClientRectangle, 20);
             next.Region = GetRoundedRegion(next.ClientRectangle, 20);
+            CurrentSong.Region = GetRoundedRegion(CurrentSong.ClientRectangle, 20);
 
         }
 
@@ -65,6 +66,17 @@ namespace MusicPlayer
             List<Label> list = GetLabelsList();
             for (int i = 0; i < Data.MainList.Count; i++)                
                 list[i].Text = Data.MainList[i].Name;
+        }
+
+        string CutSongName(string songPath)
+        {
+            int i = songPath.Length - 3;
+            while (i > 0)
+            {
+                if(songPath[--i] == '\\')
+                    return songPath.Remove(0, i+1);
+            }
+            return songPath;
         }
 
         public static Region GetRoundedRegion(Rectangle rect, int d)
@@ -306,6 +318,7 @@ namespace MusicPlayer
                 Data.player.SoundLocation = Data.MainList[listIndex].Songs[songIndex];
                 Data.player.Load();
                 Data.player.Play();
+                CurrentSong.Text = CutSongName(Data.MainList[listIndex].Songs[songIndex]);
             }            
         }
 
@@ -313,7 +326,8 @@ namespace MusicPlayer
         {
             Data.player.SoundLocation = Data.MainList[0].Songs[0];
             Data.player.Load();
-            Data.player.Play();            
+            Data.player.Play();
+            CurrentSong.Text = CutSongName(Data.MainList[0].Songs[0]);
         }
 
         private void stop_Click(object sender, EventArgs e)
@@ -328,6 +342,7 @@ namespace MusicPlayer
             Data.player.SoundLocation = Data.MainList[listIndex].Songs[songIndex];
             Data.player.Load();
             Data.player.Play();
+            CurrentSong.Text = CutSongName(Data.MainList[listIndex].Songs[songIndex]);
         }
 
         private void prev_Click(object sender, EventArgs e)
@@ -337,6 +352,7 @@ namespace MusicPlayer
             Data.player.SoundLocation = Data.MainList[listIndex].Songs[songIndex];
             Data.player.Load();
             Data.player.Play();
+            CurrentSong.Text = CutSongName(Data.MainList[listIndex].Songs[songIndex]);
         }
 
         private void Form1_VisibleChanged(object sender, EventArgs e)
